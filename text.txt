@@ -1,0 +1,31 @@
+Jannatu78@gmail.com
+elamoni8@gmail.com
+[
+  {
+    "questionNo": 1,
+    "level":"SSC",
+    "subject":"physics",
+    "type:"free",
+    "question": "স্থির অবস্থান থেকে বিনা বাধায় কোন বস্তুকে যদি পড়তে দেওয়া হয় এবং ১ম সেকেন্ডে h দূরত্ব অরিক্রম করে 4 সেকেন্ড পর বস্তুর অতিক্রান্ত দূরত্ব কত হবে?",
+    "options": ["4 h", "8 h", "16 h", "h/4"],
+    "correctAnswer": "16 h"
+  },
+  {
+    "questionNo": 2,
+    "level":"SSC",
+    "subject":"physics",
+    "type:"free",
+    "question": "কোনটি স্কেলার রাশি?",
+    "options": ["বেগ", "ত্বরণ", "সরণ", "সময়"],
+    "correctAnswer": "সময়"
+  },
+  {
+    "questionNo": 3,
+    "level":"SSC",
+    "subject":"physics",
+    "type:"free",
+    "question": "এক ব্যক্তি 7 m ব্যাসার্ধ বিশিষ্ট বৃত্তাকার মাঠ 1.5 পাক ঘুরলে তার সরণ কত?",
+    "options": ["0 m", "14 m", "43.98 m", "65.97 m"],
+    "correctAnswer": "14 m"
+  }
+]

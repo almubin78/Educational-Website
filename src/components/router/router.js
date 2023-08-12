@@ -4,7 +4,11 @@ import Home from "../home/Home";
 import Register from "../register/Register";
 import Routine from "../Routine/Routine";
 import Login from "../login/Login";
-import Dashboard from "../Dashboard/Dashboard";
+import AboutUs from "../AboutUs/AboutUs";
+import Error from "../Error";
+import PracticeMCQ from "../PracticeMCQ/PracticeMCQ";
+import MakeMCQ from "../PracticeMCQ/MakeMCQ";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -17,13 +21,6 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home/>
-            },{
-                path:'/register',
-                element:<Register/>
-            
-            },{
-                path:'/login',
-                element:<Login/>
             },
             {
                 path:'/routine',
@@ -31,10 +28,33 @@ const router = createBrowserRouter([
             
             },
             {
-                path:'/dashboard',
-                element: <Dashboard></Dashboard>
-            }
+                path:'/mcq',
+                element:<MakeMCQ/>
+            
+            },
         ]
+    },{
+        path:'/login',
+        element:<Login/>
+    },{
+        path:'/register',
+        element:<Register/>
+    
+    },
+    {
+        path:'/about',
+        element: <AboutUs/>
+    }
+    
+    ,
+    {
+        path:'*',
+        element: <Error/>
+    }
+    ,
+    {
+        path:'/practice',
+        element: <PrivateRoute><PracticeMCQ/></PrivateRoute>
     }
 ])
 

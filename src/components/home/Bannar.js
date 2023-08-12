@@ -1,20 +1,7 @@
-import React from 'react';
 import 'aos/dist/aos.css';
-import Typed from 'typed.js';
+import Typewriter from 'react-ts-typewriter';
 
 const Bannar = () => {
-    const el = React.useRef(null);
-
-    React.useEffect(() => {
-        const typed = new Typed(el.current, {
-            strings: ['Learning^1000', ' Thinking'],
-            typeSpeed: 200,
-        });
-
-        return () => {
-            typed.destroy();
-        };
-    }, []);
     return (
         <div
 
@@ -34,28 +21,23 @@ const Bannar = () => {
                 boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.2)',
             }}
         >
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }} >Build Your <span
-                data-aos="fade-in"
-                data-aos-delay="200"
-                // data-aos-duration="1000"
-                // data-aos-easing="ease-in-out"
 
-                className='underline decoration-indigo-500 text-indigo-900 font-black'
-            >Base</span> with me</h1>
-            <p style={{ fontSize: '1.5rem' }}>I am here to help you <br /> to show the path of:</p>
             {/* Auto Type Section */}
-            <span
-                style={{ letterSpacing: '1px' }}
-                className='font-black text-pink-100 bg-teal-600 p-3 rounded-lg'
-                ref={el}>
-
-            </span>
+            <span>Build Your:</span>
+            <Typewriter
+                className='mb-5'
+                text='Learning Process'
+                loop={true}
+                speed={200}
+                delay={300}
+            />
             <span
                 style={{ letterSpacing: '2px' }}
-                class="inline-block animate-bounce rounded-full p-3 bg-teal-600  text-white text-sm"
-                >Process
+                class="inline-block animate-bounce rounded-full mt-3 p-3 bg-teal-600  text-white text-sm"
+            >Coming Soon....
             </span>
-            
+            {/* <progress className="progress w-56"></progress> */}
+
 
         </div>
     );

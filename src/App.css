@@ -1,5 +1,68 @@
+.table-container{
+  overflow-x: scroll;
+}
+/* For Calculator */
+.calculator-section {
+  position: sticky;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: width 0.3s ease-in-out;
+}
+
+.calculator-visible {
+  width: 300px; /* Adjust the width as needed */
+}
+
 input{
   background-color: beige;
   margin: 5px;
   border:1px solid beige;
+}
+.link{
+  padding:2px 5px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+.active{
+  background-color: rgb(18, 123, 243);
+  
+  
+}
+.menuCss{
+  font-size: 30px;
+  font-weight: 800;
+  padding:10px 5px;
+  box-shadow: 0px 2px 6px rgba(226, 209, 209, 0.8),
+}
+@media only screen and(max-width:700px){
+ footer h3{
+  
+ }
+}
+
+/* made when practice bistro-boss */
+.spinner-logo {
+  height: 20vmin;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spinner-logo {
+    animation: spinner-logo-spin infinite 2s linear;
+  }
+}
+
+
+@keyframes spinner-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

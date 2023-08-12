@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Dashboard = () => {
+const TermsCondition = () => {
     return (
         <div>
-            THis is dash
+            
         </div>
     );
 };
 
-export default Dashboard;
+export default TermsCondition;

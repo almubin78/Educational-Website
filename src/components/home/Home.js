@@ -1,25 +1,34 @@
 import React, { useContext } from 'react';
-import Bannar from './Bannar';
-import AboutUs from '../AboutUs/AboutUs';
+// import Bannar from './Bannar';
+// import AboutUs from '../AboutUs/AboutUs';
 import { VarContext } from '../../context/AuthProvider';
-import { Link } from 'react-router-dom';
+// import Comment from './Comment';
+// import Slider from './Slider';
+// import NewsTric from '../Test/NewsTric';
+import OurStudents from './OurStudents';
+// import Apply from './Apply'
+import Comment from './Comment';
+// import ExperimentOparations from '../Test/ExperimentOparations';
+
 
 const Home = () => {
-    const {user} =useContext(VarContext);
+    const {loading } = useContext(VarContext);
+    // console.log(user);
+    if (loading) {
+        return <p>Please wait...</p>
+    }
     return (
         <div>
-            {
-                user?.uid ?  
-                <>
-                    <marquee ><h3 className='mt-6'>Welcome <span className='text-lg font-bold uppercase text-yellow-500'>{user.displayName}</span>. I hope you enjoy the journey</h3></marquee>
-                </> 
-                :<>
-                <marquee><h2 className='text-purple-500 m-6'>For see more features please  <Link className='btn btn-sm' to='/register'>Register</Link> !!</h2></marquee>
-                </>
-            }
-           <Bannar/>
-           About us: 
-           <AboutUs></AboutUs>
+            
+            {/* <ExperimentOparations/> */}
+            <Comment />
+            {/* <AboutUs></AboutUs> */}
+            {/* <Apply></Apply> */}
+            <OurStudents/>
+            {/* <NewsTric /> */}
+            {/* <Bannar /> */}
+            {/* <Slider /> */}
+            {/* <div className='my-8'></div> */}
         </div>
     );
 };

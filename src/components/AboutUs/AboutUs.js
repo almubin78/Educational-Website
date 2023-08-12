@@ -1,12 +1,50 @@
 import React from 'react';
+import AboutSubjects from './AboutSubjects';
+import Navber from '../NavigationBar/Navber';
 
 const AboutUs = () => {
     return (
-        <div>
-            The coaching institution is dedicated to providing comprehensive education in the fields of physics, ICT (Information and Communication Technology), and math. With a team of highly qualified and experienced educators, the institution aims to equip students with a strong foundation in these subjects, enabling them to excel academically and prepare for future challenges. The physics curriculum covers fundamental principles, laws, and theories, fostering a deep understanding of the subject and enhancing problem-solving skills. In the ICT domain, students learn about various technologies, software applications, and programming languages, empowering them to navigate the digital world with proficiency. Additionally, the math curriculum emphasizes conceptual clarity and logical reasoning, enabling students to master mathematical concepts and develop analytical thinking abilities. Through a combination of theoretical instruction, practical exercises, and interactive learning methods, the coaching institution strives to inspire students, instill a love for these subjects, and nurture their intellectual growth.
-            
-            <p>The coaching institution aims to provide comprehensive education to students, focusing on three key subjects: physics, ICT (Information and Communication Technology), and math. With a team of highly qualified and experienced instructors, the institution ensures that students receive top-notch guidance and support in these areas. In the physics curriculum, students delve into fundamental concepts and principles, honing their analytical and problem-solving skills through practical experiments and theoretical explanations. The ICT program equips students with essential digital literacy skills, teaching them how to navigate technology, use software tools effectively, and develop programming expertise. Additionally, the math curriculum emphasizes building a strong foundation in mathematical concepts, enabling students to tackle complex calculations and logical reasoning with confidence. Through a combination of interactive classroom sessions, hands-on activities, and regular assessments, the coaching institution creates a dynamic learning environment that fosters academic excellence and cultivates a deep passion for these subjects among students.</p>
-        </div>
+        <>
+            {/* About Me section start */}
+            <Navber />
+            {/* <Link to='/' className='btn'>Home Page</Link> */}
+            <div className='container mx-auto mt-2 mb-2'>
+                <div class="bg-pink-200 rounded-lg shadow-lg p-6 container ">
+                    <h2 class="text-2xl font-bold mb-4">About Me</h2>
+                    <p class="text-gray-600 mb-4">
+                        At my teaching institution, I am dedicated to providing high-quality education in various subjects. I specialize in Physics and ICT offering comprehensive courses designed to help students excel in these fields.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        I am committed to nurturing a positive learning environment where students can thrive. I believe in the power of education to transform lives, and I strive to instill a love for learning in all my students.
+                    </p>
+                    <div className="preSection snap-x text-white-200 mb-4 p-4 bg-black border rounded shadow-lg ">
+                            <p class="">With my personalized approach, I cater to the unique needs and learning styles of each student.</p>
+                            <p>I have a <span className='text-xl text-amber-400 font-bold'> message to you</span>:</p>
+                            <pre>Whether you're preparing for exams,</pre>
+                            <pre>Aiming to improve your grades,or seeking</pre>
+                            <pre>A deeper understanding of the subject matter, </pre>
+                            <pre>I am here to support you every step of the way.</pre>
+                        
+                    </div>
+                    <p class="text-gray-600">
+                        Join with me on this educational journey and unlock your full potential in Physics and ICT!
+                    </p>
+                    <div className='divider'>Thanks for read me 👌</div>
+                    <div className=''>
+                        <p className='text-end text-red-400 text-xl font-extrabold'> Md: Al Mubin Sarker</p>
+                        <p className='text-end font-medium'>👨‍🎓 BSc in Physics</p>
+                        <p className='text-end font-medium'>💻 A full Stack Web developer</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+            {/* About Me section END */}
+            {/* About Subjects section start */}
+            <AboutSubjects />
+            {/* About Subjects section END */}
+        </>
     );
 };
 
