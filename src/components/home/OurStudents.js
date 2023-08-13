@@ -55,7 +55,7 @@ const OurStudents = () => {
             </div>
             <div className='md:hidden'>
                 <h3 className="divider font-bold text-xl">Registered Students: {registeredStudents.length}</h3>
-                <Marquee speed={200} direction='right' className='my-5'>
+                <Marquee speed={85} direction='right' className='my-5'>
                     {/* Live students */}
                     <div className='flex gap-5'>
                         {registeredStudents.map(student => <Student

@@ -23,6 +23,7 @@ const Student = ({ student }) => {
                                 <p>Institution: Nakai Hat Collage</p>
                         }
                         <p>Class: {student.classDetail}</p>
+                        {/* <p>Mail: {student.email}</p> */}
                         <p>Student Of: {student.subject}</p>
                         {/* <div className="card-actions justify-end">
                         <button className="btn btn-primary">Buy Now</button>

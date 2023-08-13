@@ -26,12 +26,14 @@ const Register = () => {
     //toggle
     const [instruction, setInstruction] = useState(false);
     const toggleContent = () => {
-        setInstruction(!instruction)
+        setInstruction(!instruction);
+        setNoKnowledge(false)
     }
 
     const [noKnowledge, setNoKnowledge] = useState(false);
     const toggleContentNoKnowledge = () => {
         setNoKnowledge(!noKnowledge)
+        setInstruction(false)
     }
 
 
@@ -111,7 +113,7 @@ const Register = () => {
     }
     const saveUser = user => {
         // axios.post('http://localhost:5000/student', user)
-            axios.post('https://phyict-server-almubin78.vercel.app/student', user)
+        axios.post('https://phyict-server-almubin78.vercel.app/student', user)
             .then(data => {
                 // setCreatedUserEmail(data.email);
             })
@@ -122,37 +124,24 @@ const Register = () => {
     if (loading) {
         return <Loading />
     }
-
-    const handleMoreInstruction = () => {
-        const handleMoreInstructionMail = () => {
-            return (
-                <>
-                    <p className='text-center'>সমস্যা নাই। tomarName11@gmail.com এভাবে ইচ্চা মত মেইল বানিয়ে (সেই মেইলে অবশ্যই @ চিহ্ন এবং শেষে যাতে .com থাকে) ইচ্ছেমত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে (I agree to the <span className='text-warning'>terms and conditions </span>) লেখাটির বামপাশে টিক চিহ্ন দিয়ে (টিক চিহ্ন না দিলে রেজিষ্টারই করতে পারবেনা) <span>SIGN UP</span> বাটনে ক্লিক কর।</p>
-                   
-                    <p className='text-warning'>Note that: মেইল এবং পাসওয়ার্ড মনে রাখতে হবে। প্রয়োজনে লিখে রাখ।</p>
-                </>
-            )
-        }
+    const handleMoreInstructionMail = () => {
         return (
-            <>
-                <p className='text-center'>তোমার যদি gmail/yahoo এর সাথে পরিচয়  থাকে আর একাউন্ট থাকে তাহলে সেই মেইল , ইচ্চা মত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে (I agree to the <span className='text-warning'>terms and conditions </span>) লেখাটির বামপাশে টিক চিহ্ন দিয়ে (টিক চিহ্ন না দিলে রেজিষ্টারই করতে পারবেনা) <span className='border p-1 rounded'>SIGN UP</span> বাটনে ক্লিক কর।</p>
+            <div className='border rounded-lg p-3 mt-2'>
+                <p className=''>সমস্যা নাই। tomarName11@gmail.com এভাবে ইচ্চা মত মেইল বানিয়ে (সেই মেইলে অবশ্যই @ চিহ্ন এবং শেষে যাতে .com থাকে) ইচ্ছেমত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে (I agree to the <span className='text-warning'>terms and conditions </span>) লেখাটির বামপাশে টিক চিহ্ন দিয়ে (টিক চিহ্ন না দিলে রেজিষ্টারই করতে পারবেনা) <span>SIGN UP</span> বাটনে ক্লিক কর।</p>
+
+                <p className='text-warning'>Note that: মেইল এবং পাসওয়ার্ড মনে রাখতে হবে। প্রয়োজনে লিখে রাখ।</p>
+            </div>
+        )
+    }
+    const handleMoreInstruction = () => {
+
+        return (
+            <div className='border rounded-lg p-3 mt-2'>
+                <p className=''>তোমার যদি gmail/yahoo এর সাথে পরিচয়  থাকে আর একাউন্ট থাকে তাহলে সেই মেইল , ইচ্চা মত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে (I agree to the <span className='text-warning'>terms and conditions </span>) লেখাটির বামপাশে টিক চিহ্ন দিয়ে (টিক চিহ্ন না দিলে রেজিষ্টারই করতে পারবেনা) <span className='border p-1 rounded'>SIGN UP</span> বাটনে ক্লিক কর।</p>
                 <p className='text-warning'>Note that: মেইল এবং পাসওয়ার্ড মনে রাখতে হবে। প্রয়োজনে লিখে রাখ।</p>
 
-                <div className="container mx-auto py-8">
-                    {/* Other content */}
-                    <button
-                        onClick={toggleContentNoKnowledge}
-                        className={`btn `}
-                    >
-                        {noKnowledge ? 'Hide' : 'আমি মেইল সম্পর্কে ধারণা নেই।'}
-                    </button>
-                    {
-                        noKnowledge &&
-                        handleMoreInstructionMail()
-                    }
 
-                </div>
-            </>
+            </div>
         )
     }
 
@@ -161,17 +150,33 @@ const Register = () => {
         <>
             {/* <Link to='/' className='btn'>Home Page</Link> */}
             <Navber />
-            <div className="container mx-auto py-8">
-                {/* Other content */}
-                <button
-                    onClick={toggleContent}
-                    className={`btn `}
-                >
-                    {instruction ? 'X' : 'নির্দেশনা দেখ'}
-                </button>
-                {instruction && handleMoreInstruction()}
-                {/* Other content */}
+            <div className="flex">
+                <div className="container mx-auto py-8">
+                    {/* Other content */}
+                    <button
+                        onClick={toggleContent}
+                        className={`btn `}
+                    >
+                        {instruction ? 'Hide' : 'নির্দেশনা দেখ'}
+                    </button>
+                    {instruction && handleMoreInstruction()}
+                    {/* Other content */}
 
+                </div>
+                <div className="container mx-auto py-8">
+                    {/* Other content */}
+                    <button
+                        onClick={toggleContentNoKnowledge}
+                        className={`btn `}
+                    >
+                        {noKnowledge ? 'Hide' : 'আমার মেইল সম্পর্কে ধারণা নেই।'}
+                    </button>
+                    {
+                        noKnowledge &&
+                        handleMoreInstructionMail()
+                    }
+
+                </div>
             </div>
             <div className='h-[800px] flex justify-center items-center mt-5'>
                 <div className='w-96 p-7'>
