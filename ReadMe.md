@@ -1,6 +1,6 @@
 <!-- Private website client -->
 ## firebase (myjob): educational-website
-## github (almlubin ): educational website
+## Mongodb (almlubin ): educational website
 # [Demo Live site](https://educational-website-14cc2.web.app)
 # [Vercel Server](https://phyict-server-almubin78.vercel.app/)
 
@@ -15,10 +15,9 @@ https://i.ibb.co/qNLNf9v/physicsandict2.png
 ```
 ## installed
 ```
+npm i firebase
+npm install --save react-firebase-hooks
 npm install --save aos@next
-npm install typed.js
-<!-- another type -->
-npm i react-ts-typewriter
 npm install moment
 npm install --save react-awesome-slider
 npm i react-advanced-news-ticker
@@ -26,6 +25,11 @@ npm install react-animatable
 npm install react-fast-marquee --save
 npm install react-id-swiper swiper
 npm install sweetalert2 [ Swal.fire]
+npm install framer-motion
+
+npm install typed.js
+<!-- another type -->
+npm i react-ts-typewriter
 <!-- npm install --save react-awesome-button ফালতু-->
 ``` 
 * [AOS web link](https://github.com/michalsnik/aos)
@@ -38,7 +42,6 @@ npm install sweetalert2 [ Swal.fire]
 * [https://ahmetcan.org/react-advanced-news-ticker/](https://ahmetcan.org/react-advanced-news-ticker/)
 
 * [দারুন ভাবে রেসপন্সিভ করার প্যাকেজ](https://umeshmk.github.io/react-schematic/)
-* [ওরে বাপরেঃ কাষ্টম এনিমেশন। পদার্থের জন্য কাজে লাগতে পারে. tobe code nai](https://inokawa.github.io/react-animatable/?path=/story/hooks-useanimation--playground)
 [https://github.com/inokawa/react-animatable](https://github.com/inokawa/react-animatable)
 
 [https://www.react-fast-marquee.com/](https://www.react-fast-marquee.com/)

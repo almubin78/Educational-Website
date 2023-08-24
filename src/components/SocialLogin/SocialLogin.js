@@ -17,7 +17,7 @@ const SocialLogin = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
-                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
+                const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email,img: loggedInUser.photoURL }
                 // fetch('http://localhost:5000/student', {
                 fetch('https://phyict-server-almubin78.vercel.app/student', {
                     method: 'POST',

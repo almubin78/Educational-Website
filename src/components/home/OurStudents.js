@@ -42,7 +42,7 @@ const OurStudents = () => {
                     </div>
                 </Marquee>
                 {/* Demo students */}
-                <div className='divider'>Demo Students</div>
+                {/* <div className='divider'>Demo Students</div>
                 <Marquee speed={100} className='my-5'>
                     <div className='flex gap-5'>
                         {students.map(student => <Student
@@ -51,7 +51,7 @@ const OurStudents = () => {
                         ></Student>)}
 
                     </div>
-                </Marquee>
+                </Marquee> */}
             </div>
             <div className='md:hidden'>
                 <h3 className="divider font-bold text-xl">Registered Students: {registeredStudents.length}</h3>

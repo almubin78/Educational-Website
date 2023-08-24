@@ -17,11 +17,9 @@ const Register = () => {
     const [signUpError, setSignUpError] = useState('');
     // const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [termsAgreed, setTermsAgreed] = useState(false);
-    //createdUserEmail will use for use Token hooks
 
-    const [imgLink, setImgLink] = useState('');
-    const imgHostKey = process.env.REACT_APP_ImgBB_API_KEY;
-    /* THERE REACT_APP_ IS IMPORTANT , if u reWrite the re start the app*/
+
+    
 
     //toggle
     const [instruction, setInstruction] = useState(false);
@@ -38,14 +36,15 @@ const Register = () => {
 
 
     const go = useNavigate();
+    const imgHostKey = process.env.REACT_APP_ImgBB_API_KEY;
     const handleSignUp = data => {
 
 
         /* Imgbb integration */
         const image = data.myImage[0];
         const formData = new FormData();
-        formData.append('image', image);
-        console.log('form data after append in imgbb integration', formData); //out put just a Object
+        formData.append('image', image); //just an object
+
         const url = `https://api.imgbb.com/1/upload?key=${imgHostKey}`;
         console.log('url with imgBB api key', url); //get successfully
         fetch(url, {
@@ -54,21 +53,15 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(imgData => {
-
-                console.log('imgData', imgData);
-                console.log('form data', data);
-                if (imgData.success === true) {
-                    setImgLink(imgData.data.display_url);
-                    console.log('triger img link in Register after imgData', imgLink); //not get
-                    /* Firebase integration */
+                if (imgData.success) {
+                    const imgURL = imgData.data.display_url;
 
                     registerWithEmailAndPass(data.email, data.password)
                         .then(res => {
                             console.log('res after integrate registerWithEmailAndPass', res);
                             const userInfo = {
                                 displayName: data.name,
-                                // photoURL: `${imgLink}`,
-                                photoURL: imgLink
+                                photoURL: imgURL
 
                             }
 
@@ -77,7 +70,7 @@ const Register = () => {
                                     const newStudent = {
                                         name: data.name,
                                         email: data.email,
-                                        img: imgLink,
+                                        img: imgURL,
                                         classDetail: data.classDetail,
                                         subject: data.subject,
                                         institution: data.institution,
@@ -85,7 +78,7 @@ const Register = () => {
 
 
                                     }
-                                    console.log('userInfo inside updateUser firebase', userInfo);
+                                    console.log('userInfo inside updateUser firebase', userInfo,'new student',newStudent);
                                     saveUser(newStudent);
                                     go('/login')
 
@@ -118,6 +111,12 @@ const Register = () => {
                 // setCreatedUserEmail(data.email);
             })
     }
+    // Conditional render for diff class
+    const [classDetail, setClassDetail] = useState('');
+
+    const handleClassChange = (event) => {
+        setClassDetail(event.target.value);
+    };
     //see bellow[after export this page] for simple fetch
 
 
@@ -127,7 +126,7 @@ const Register = () => {
     const handleMoreInstructionMail = () => {
         return (
             <div className='border rounded-lg p-3 mt-2'>
-                <p className=''>সমস্যা নাই। tomarName11@gmail.com এভাবে ইচ্চা মত মেইল বানিয়ে (সেই মেইলে অবশ্যই @ চিহ্ন এবং শেষে যাতে .com থাকে) ইচ্ছেমত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে (I agree to the <span className='text-warning'>terms and conditions </span>) লেখাটির বামপাশে টিক চিহ্ন দিয়ে (টিক চিহ্ন না দিলে রেজিষ্টারই করতে পারবেনা) <span>SIGN UP</span> বাটনে ক্লিক কর।</p>
+                <p className=''>সমস্যা নাই। tomarName11@gmail.com এভাবে ইচ্চা মত মেইল বানিয়ে ইচ্ছেমত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে I agree to the <span className='text-warning'>terms and conditions </span> লেখাটির বামপাশে টিক চিহ্ন দিয়ে Register বাটনে ক্লিক কর।</p>
 
                 <p className='text-warning'>Note that: মেইল এবং পাসওয়ার্ড মনে রাখতে হবে। প্রয়োজনে লিখে রাখ।</p>
             </div>
@@ -137,8 +136,7 @@ const Register = () => {
 
         return (
             <div className='border rounded-lg p-3 mt-2'>
-                <p className=''>তোমার যদি gmail/yahoo এর সাথে পরিচয়  থাকে আর একাউন্ট থাকে তাহলে সেই মেইল , ইচ্চা মত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে (I agree to the <span className='text-warning'>terms and conditions </span>) লেখাটির বামপাশে টিক চিহ্ন দিয়ে (টিক চিহ্ন না দিলে রেজিষ্টারই করতে পারবেনা) <span className='border p-1 rounded'>SIGN UP</span> বাটনে ক্লিক কর।</p>
-                <p className='text-warning'>Note that: মেইল এবং পাসওয়ার্ড মনে রাখতে হবে। প্রয়োজনে লিখে রাখ।</p>
+                <p className=''>তোমার যদি gmail/yahoo এর সাথে পরিচয়  থাকে আর একাউন্ট থাকে তাহলে সেই মেইল এরপর ইচ্চা মত পাসওয়ার্ড দিয়ে বাকি তথ্যগুলো ফিলআপ করে I agree to the <span className='text-warning'>terms and conditions </span> লেখাটির বামপাশে টিক চিহ্ন দিয়ে Register বাটনে ক্লিক কর।</p>
 
 
             </div>
@@ -180,7 +178,7 @@ const Register = () => {
             </div>
             <div className='h-[800px] flex justify-center items-center mt-5'>
                 <div className='w-96 p-7'>
-                    <h2 className='text-xl text-center'>Sign Up</h2>
+                    <h2 className='text-xl text-center'>Register</h2>
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                     <form onSubmit={handleSubmit(handleSignUp)}>
 
@@ -212,8 +210,12 @@ const Register = () => {
                             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Choose Your Level</span></label>
-                            <select {...register('classDetail')} className="input input-bordered w-full max-w-xs">
+                            <label className="label"> <span className="label-text">Choose Your Class</span></label>
+                            <select 
+                            {...register('classDetail')} 
+                            className="input input-bordered w-full max-w-xs"
+                            onChange={handleClassChange}
+                            >
                                 <option value="Nine">Class Nine</option>
                                 <option value="Ten">Class Ten</option>
                                 <option value="HSC 1st">Inter First Year</option>
@@ -223,16 +225,33 @@ const Register = () => {
                             {errors.classDetail && <p className='text-red-500'>{errors.classDetail}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Choose Your Subject</span></label>
+                            <label className="label">
+                                <span className="label-text">Choose Your Subject</span>
+                            </label>
                             <select {...register('subject')} className="input input-bordered w-full max-w-xs">
-                                <option value="Physics">Physics</option>
-                                <option value="ICT">ICT (HSC only)</option>
+                                {
+                                    classDetail.includes('HSC')? <>
+                                    <option value="Physics">Physics</option>
+                                    
+                                    <option value="ICT">ICT (basic to advanced)</option>
+                                    </>:<>
+                                    <option value="Physics">Physics (+ Math Bonus)</option>
+                                    </>
+                                }
                             </select>
-                            {errors.subject && <p className='text-red-500'>{errors.subject}</p>}
+                            {errors.subject && <p className="text-red-500">{errors.subject}</p>}
                         </div>
 
                         <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">School/Collage Name</span></label>
+                        {/* classDetail.includes('HSC')? <></>:<></> */}
+                        {
+                            classDetail.includes('HSC')? <>
+                            <label className="label"> <span className="label-text">Your Collage Name</span></label>
+                            </>:<>
+                            <label className="label"> <span className="label-text">Your School/Madrasha Name</span></label>
+                            </>
+                        }
+                            
                             <input type="text" {...register("institution", {
                                 required: true
                             })} className="input input-bordered w-full max-w-xs" />
@@ -240,7 +259,8 @@ const Register = () => {
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Upload Your Image</span></label>
-                            <input type="file" {...register('myImage')} />
+                            
+                            <input type="file" {...register('myImage')} className="file-input file-input-bordered file-input-accent w-full max-w-xs" />
                             {errors.myImage && <p className='text-red-500'>{errors.myImage}</p>}
                         </div>
 
@@ -255,24 +275,18 @@ const Register = () => {
                                     checked={termsAgreed}
                                     onChange={(e) => setTermsAgreed(e.target.checked)}
                                 />
+                                
                                 <span className="">I agree to the <Link to='/terms-condition' className='underline text-yellow-600'>terms and conditions</Link></span>
                             </label>
                             {errors.terms && <p className='text-red-500'>{errors.terms.message}</p>}
                         </div>
+                        {/* Conditionally render the "Register" button */}
                         <input
                             className={`btn btn-accent w-full mt-4 ${termsAgreed ? '' : 'disabled:opacity-100 cursor-not-allowed'}`}
-                            value="Sign Up"
+                            value="Register"
                             type="submit"
                             disabled={!termsAgreed}
                         />
-                        {/* Conditionally render the "Sign Up" button */}
-                        {/* {termsAgreed && (
-                            <input
-                                className='btn btn-accent w-full mt-4'
-                                value="Sign Up"
-                                type="submit"
-                            />
-                        )} */}
 
 
 

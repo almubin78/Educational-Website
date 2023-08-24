@@ -23,7 +23,7 @@ const Routine = () => {
       </span>
       <table className="table-auto w-full border">
         <caption className="text-xl font-bold mb-2">Routine Overview</caption>
-        <caption className="text-sm font-bold mb-2">for full routine for every single class <Link to='/fullRoutine' className='text-warning'>Click Here</Link></caption>
+        <caption className="text-sm font-bold mb-2">প্রত্যেক শ্রেণির আলাদা করে লেকচার প্লান দেখতে <Link to='/fullRoutine' className='text-warning'>এখানে ক্লিক কর</Link></caption>
         <thead>
           <tr>
             <th className="border px-4 py-2">Days Name</th>

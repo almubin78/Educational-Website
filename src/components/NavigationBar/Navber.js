@@ -25,7 +25,8 @@ const Navber = () => {
                     aria-label="Toggle Menu"
                 >
                     {isOpen ? (
-                        <i className="fas bg-gray-500 p-2 rounded fa-times"></i>
+                        // <i className="fas bg-gray-500 p-4 rounded fa-times"></i>
+                        <p className="fas bg-gray-500 p-2 rounded ">Hide Menu</p>
                     ) : (
                         <i className="fas fa-bars"></i>
                     )}
@@ -53,9 +54,15 @@ const Navber = () => {
                             </NavLink>
                             <NavLink
                                 to="/practice"
-                                className="block mt-4 md:inline-block md:mt-0 text-white mr-4"
+                                className="block mt-4 md:inline-block md:mt-0 text-white mr-4 link"
                             >
-                                Practice
+                                Play MCQ
+                            </NavLink>
+                            <NavLink
+                                to="/calculationMath"
+                                className="block mt-4 md:inline-block md:mt-0 text-white mr-4 link"
+                            >
+                                Apply Law's
                             </NavLink>
                             {/* <NavLink
                                 to="/mcq"

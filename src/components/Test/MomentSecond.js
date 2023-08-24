@@ -16,7 +16,7 @@ const MomentSecond = () => {
 
 
   const calculateTimeLeft = () => {
-    const targetDate = moment('2023-8-20', 'YYYY-MM-DD');
+    const targetDate = moment('2023-9-01', 'YYYY-MM-DD');
     const duration = moment.duration(targetDate.diff(currentTime));
 
     const days = Math.floor(duration.asDays());
@@ -39,10 +39,10 @@ const MomentSecond = () => {
   return (
     <div className="bg-gray-200 bg-transparent p-4 rounded-lg">
 
-      Todays time:<p>{formattedDate}</p>
-      Start at : 20-August-2023
+      <p className='bg-gray-500 text-2xl text-center py-4'>{formattedDate}</p>
+      <p className='mt-3'>ক্লাস শুরু : 01-September-2023</p>
       {/* We will be start Our program at {targetDate2} */}
-      <p className=" text-lg font-bold mb-2">Launch after</p>
+      <p className="divider text-lg font-bold mb-2">সময় বাকি আছে</p>
       
        <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">

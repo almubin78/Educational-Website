@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { VarContext } from '../../context/AuthProvider';
 import Navber from '../NavigationBar/Navber';
-
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { loginWithEmailAndPass } = useContext(VarContext)
@@ -20,13 +19,15 @@ const Login = () => {
     }
     const hadleShowInstruction = () => {
         return (<>
-            <div className="px-5">
-                <p>তোমার রেজিস্টার করা ইমেইল আর পাসওয়ার্ড লিখে <span className=" text-green-300 p-2">LOG IN</span> button এ click কর।</p>
+            <div className="p-5">
+                <p>তোমার রেজিস্টার করা ইমেইল আর পাসওয়ার্ড লিখে নিচের <span className=" text-green-300 p-2">LOG IN</span> button এ click কর।</p>
                 <br />
                 <p>রেজিষ্টার করনি? <Link className='text-secondary' to="/register">Please Register</Link> 👈 এখানে ক্লিক কর।</p>
             </div>
         </>)
     }
+    
+
     const handleLogin = data => {
         console.log('data from handleLogin form', data);
         loginWithEmailAndPass(data.email, data.password)
@@ -39,18 +40,7 @@ const Login = () => {
                 if (err.message) {
                     setLoginError("ভুল হচ্ছে,তোমার Email/Password ভাল ভাবে চেক কর।");
                 }
-                /* 
-                or I can use following code for firebase error without : Firebase/errr......... 
-
-                 if (err.message) {
-                    const errorCode = err.message.split(')')[1].trim();
-                    setLoginError(`(${errorCode})`);
-                } 
-                else {
-                    setLoginError('An error occurred while logging in');
-                 }
                 
-                */
             });
     }
     return (
@@ -66,15 +56,14 @@ const Login = () => {
                     {open ? 'HIDE' : 'নির্দেশনা দেখ'}
                 </button>
                 {open && hadleShowInstruction()}
-
             </div>
 
             <div className='h-[800px] flex justify-center items-center'>
-                <div className='w-96 p-7'>
+                <div className='w-96 p-1'>
                     <h2 className='text-xl divider text-center'>Login Please</h2>
                     {loginError && <p className='text-red-300 border rounded-2xl py-1 text-center'>{loginError}</p>}
                     <form onSubmit={handleSubmit(handleLogin)}>
-
+                    
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Email</span></label>
                             <input
@@ -101,11 +90,12 @@ const Login = () => {
                             />
                             {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                         </div>
+                        <Link to='/reset' className='hover:text-warning'>Forgot password?</Link>
 
                         <input className='btn btn-accent w-full mt-4' value="Log In" type="submit" />
-
+                        
                     </form>
-
+                    <p>Have not account yet? <Link className='text-secondary' to="/register">Please Register</Link></p>
 
 
 

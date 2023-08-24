@@ -9,6 +9,8 @@ import Error from "../Error";
 import PracticeMCQ from "../PracticeMCQ/PracticeMCQ";
 import MakeMCQ from "../PracticeMCQ/MakeMCQ";
 import PrivateRoute from "./PrivateRoute";
+import PhysicsCalculator from "../MathSection/PhysicsCalculator ";
+import ResetPass from "../PasswordRelated/ResetPass";
 
 
 
@@ -28,8 +30,18 @@ const router = createBrowserRouter([
             
             },
             {
+                path:'/reset',
+                element:<ResetPass/>
+            
+            },
+            {
                 path:'/mcq',
                 element:<MakeMCQ/>
+            
+            },
+            {
+                path:'/calculationMath',
+                element:<PhysicsCalculator/>
             
             },
         ]

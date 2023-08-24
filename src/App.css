@@ -20,18 +20,32 @@
 input{
   background-color: beige;
   margin: 5px;
+  padding:5px;
   border:1px solid beige;
 }
 .link{
   padding:2px 5px;
   text-decoration: none;
   border-radius: 3px;
+  /* background-color: aqua; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 .active{
   background-color: rgb(18, 123, 243);
   
   
 }
+/* .ball {
+  width: 30px;
+  height: 30px;
+  background-color: #3498db;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  transition: transform 0.5s linear;
+} */
 .menuCss{
   font-size: 30px;
   font-weight: 800;
