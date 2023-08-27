@@ -7,8 +7,10 @@ import axios from 'axios';
 import Loading from '../Loading';
 import Navber from '../NavigationBar/Navber';
 import Swal from 'sweetalert2';
+import useDynamicTitle from '../hooks/useDyanmicTitle';
 
 const Register = () => {
+    useDynamicTitle('Register')
     /* useForm  */
     const { register, handleSubmit, formState: { errors }, } = useForm();
     /* firebase access */
@@ -19,7 +21,7 @@ const Register = () => {
     const [termsAgreed, setTermsAgreed] = useState(false);
 
 
-    
+
 
     //toggle
     const [instruction, setInstruction] = useState(false);
@@ -74,11 +76,12 @@ const Register = () => {
                                         classDetail: data.classDetail,
                                         subject: data.subject,
                                         institution: data.institution,
-                                        paid: false
+                                        paid: false,
+                                        gender: data.gender
 
 
                                     }
-                                    console.log('userInfo inside updateUser firebase', userInfo,'new student',newStudent);
+                                    console.log('userInfo inside updateUser firebase', userInfo, 'new student', newStudent);
                                     saveUser(newStudent);
                                     go('/login')
 
@@ -105,8 +108,13 @@ const Register = () => {
 
     }
     const saveUser = user => {
+        //mongodb atlas
         // axios.post('http://localhost:5000/student', user)
+        // compass
+        // axios.post('http://localhost:8000/student', user)
+        // Live server
         axios.post('https://phyict-server-almubin78.vercel.app/student', user)
+
             .then(data => {
                 // setCreatedUserEmail(data.email);
             })
@@ -145,12 +153,11 @@ const Register = () => {
 
     //this is main return
     return (
-        <>
-            {/* <Link to='/' className='btn'>Home Page</Link> */}
-            <Navber />
+        <div className=''>
+            {/* Button Toggle*/}
             <div className="flex">
                 <div className="container mx-auto py-8">
-                    {/* Other content */}
+
                     <button
                         onClick={toggleContent}
                         className={`btn `}
@@ -158,11 +165,9 @@ const Register = () => {
                         {instruction ? 'Hide' : 'নির্দেশনা দেখ'}
                     </button>
                     {instruction && handleMoreInstruction()}
-                    {/* Other content */}
 
                 </div>
                 <div className="container mx-auto py-8">
-                    {/* Other content */}
                     <button
                         onClick={toggleContentNoKnowledge}
                         className={`btn `}
@@ -176,7 +181,8 @@ const Register = () => {
 
                 </div>
             </div>
-            <div className='h-[800px] flex justify-center items-center mt-5'>
+            {/* Register Form */}
+            <div className=' my-6 flex justify-center items-center mt-5'>
                 <div className='w-96 p-7'>
                     <h2 className='text-xl text-center'>Register</h2>
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
@@ -189,7 +195,18 @@ const Register = () => {
                             })} className="input input-bordered w-full max-w-xs" />
                             {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                         </div>
-
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label"> <span className="label-text">Gender</span></label>
+                            <select
+                                {...register('gender')}
+                                className="input input-bordered w-full max-w-xs"
+                            >
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                {/* <option value="Guardian">Guardian</option> */}
+                            </select>
+                            {errors.classDetail && <p className='text-red-500'>{errors.classDetail}</p>}
+                        </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Email</span></label>
                             <input type="email" {...register("email", {
@@ -211,10 +228,10 @@ const Register = () => {
                         </div>
                         <div className="form-control w-full max-w-xs">
                             <label className="label"> <span className="label-text">Choose Your Class</span></label>
-                            <select 
-                            {...register('classDetail')} 
-                            className="input input-bordered w-full max-w-xs"
-                            onChange={handleClassChange}
+                            <select
+                                {...register('classDetail')}
+                                className="input input-bordered w-full max-w-xs"
+                                onChange={handleClassChange}
                             >
                                 <option value="Nine">Class Nine</option>
                                 <option value="Ten">Class Ten</option>
@@ -230,12 +247,12 @@ const Register = () => {
                             </label>
                             <select {...register('subject')} className="input input-bordered w-full max-w-xs">
                                 {
-                                    classDetail.includes('HSC')? <>
-                                    <option value="Physics">Physics</option>
-                                    
-                                    <option value="ICT">ICT (basic to advanced)</option>
-                                    </>:<>
-                                    <option value="Physics">Physics (+ Math Bonus)</option>
+                                    classDetail.includes('HSC') ? <>
+                                        <option value="Physics">Physics</option>
+
+                                        <option value="ICT">ICT (basic to advanced)</option>
+                                    </> : <>
+                                        <option value="Physics">Physics (+ Math Bonus)</option>
                                     </>
                                 }
                             </select>
@@ -243,23 +260,23 @@ const Register = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs">
-                        {/* classDetail.includes('HSC')? <></>:<></> */}
-                        {
-                            classDetail.includes('HSC')? <>
-                            <label className="label"> <span className="label-text">Your Collage Name</span></label>
-                            </>:<>
-                            <label className="label"> <span className="label-text">Your School/Madrasha Name</span></label>
-                            </>
-                        }
-                            
+                            {/* classDetail.includes('HSC')? <></>:<></> */}
+                            {
+                                classDetail.includes('HSC') ? <>
+                                    <label className="label"> <span className="label-text">Your Collage Name</span></label>
+                                </> : <>
+                                    <label className="label"> <span className="label-text">Your School/Madrasha Name</span></label>
+                                </>
+                            }
+
                             <input type="text" {...register("institution", {
                                 required: true
                             })} className="input input-bordered w-full max-w-xs" />
                             {errors.institution && <p className='text-red-500'>{errors.institution.message}</p>}
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            <label className="label"> <span className="label-text">Upload Your Image</span></label>
-                            
+                            <label className="label"> <span className="label-text">Upload Your Image</span><span className='text-warning'>Passport Type Img is better</span></label>
+
                             <input type="file" {...register('myImage')} className="file-input file-input-bordered file-input-accent w-full max-w-xs" />
                             {errors.myImage && <p className='text-red-500'>{errors.myImage}</p>}
                         </div>
@@ -275,7 +292,7 @@ const Register = () => {
                                     checked={termsAgreed}
                                     onChange={(e) => setTermsAgreed(e.target.checked)}
                                 />
-                                
+
                                 <span className="">I agree to the <Link to='/terms-condition' className='underline text-yellow-600'>terms and conditions</Link></span>
                             </label>
                             {errors.terms && <p className='text-red-500'>{errors.terms.message}</p>}
@@ -298,7 +315,7 @@ const Register = () => {
                     {/* <SocialLogin /> */}
                 </div>
             </div>
-        </>
+        </div>
 
     );
 };

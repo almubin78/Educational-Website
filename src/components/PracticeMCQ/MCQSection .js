@@ -25,10 +25,26 @@ const MCQSection = ({ questions, selectedAnswers, onSelectAnswer, onCheckAnswers
       setShowCorrectAnswers(false); // Reset correct answers display
     }
   };
+  const shoExplain = () => {
+    return (
+      <>
+        {/* {showCorrectAnswers &&
+                  selectedAnswers[currentPage * maxQuestionsPerPage + index] !==
+                  question.correctAnswer && (
+                    <div className="text-red-800 mt-2">
+                      <p>ব্যাখ্যা:</p>
+                      {question.explanation && <p>{question.explanation}</p>}
+
+                    </div>
+                  )} */}
+      </>
+    )
+  }
   return (
     <div className="mcq-section">
       <h3 className="text-lg divider font-bold mb-4">MCQ Section : Total Questions {questions.length}</h3>
-
+      <h4 className='text-center'>এখানে শুধুমাত্র SSC Level এর পদার্থ বিজ্ঞানের MCQ দেয়া আছে।</h4>
+      <p className='text-center'>প্রতিটা mcq এর অপশন সিলেক্ট করলে CHECK ANSWER বাটন দেখতে পাবে। ভুল অফশন সিলেক্ট করলে সঠিক উত্তরের ব্যাখ্যা পেয়ে যাবে।</p>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {currentQuestions.map((question, index) => (
           <div key={index} className="mcq-question bg-gray-100 rounded p-4 mb-4">
@@ -68,16 +84,41 @@ const MCQSection = ({ questions, selectedAnswers, onSelectAnswer, onCheckAnswers
               })}
             </ul>
             {/* Show explanation if the answer is wrong */}
-            {showCorrectAnswers &&
-              selectedAnswers[currentPage * maxQuestionsPerPage + index] !==
-              question.correctAnswer && <>
-              <p className="text-red-300 mt-2">
-                 {`ব্যাখ্যা: ${question.explanation}`} 
-              </p>
-            </> 
+            {
+              question?.explanation ? <>
+                {showCorrectAnswers &&
+                  selectedAnswers[currentPage * maxQuestionsPerPage + index] !==
+                  question.correctAnswer &&
+                  <>
+                    <p className="text-red-800 mt-2">
+                      {`ব্যাখ্যা: ${question?.explanation}`}
+                    </p>
+                  </>
+
+                }
+              </> : <>
+
+                {showCorrectAnswers &&
+                  selectedAnswers[currentPage * maxQuestionsPerPage + index] !==
+                  question.correctAnswer && (
+                    <div className="text-red-800 mt-2">
+                      <p>ব্যাখ্যা:</p>
+                      {
+                        question?.fullExplanation &&
+                        question.fullExplanation.map(opt => {
+                          return <>
+                            <p>{opt} </p> <br />
+                          </>
+
+                        })
+                      }
+
+                    </div>
+                  )}
+              </>
+
 
             }
-            
 
           </div>
         ))}

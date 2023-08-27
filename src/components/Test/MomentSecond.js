@@ -39,7 +39,7 @@ const MomentSecond = () => {
   return (
     <div className="bg-gray-200 bg-transparent p-4 rounded-lg">
 
-      <p className='bg-gray-500 text-2xl text-center py-4'>{formattedDate}</p>
+      <p className='bg-gray-500 text-2xl text-center py-4 text-white'>{formattedDate}</p>
       <p className='mt-3'>ক্লাস শুরু : 01-September-2023</p>
       {/* We will be start Our program at {targetDate2} */}
       <p className="divider text-lg font-bold mb-2">সময় বাকি আছে</p>

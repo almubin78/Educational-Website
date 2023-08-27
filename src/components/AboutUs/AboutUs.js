@@ -1,12 +1,14 @@
 import React from 'react';
 import AboutSubjects from './AboutSubjects';
 import Navber from '../NavigationBar/Navber';
+import useDynamicTitle from '../hooks/useDyanmicTitle';
 
 const AboutUs = () => {
+    useDynamicTitle('About')
     return (
         <>
             {/* About Me section start */}
-            <Navber />
+            {/* <Navber /> */}
             {/* <Link to='/' className='btn'>Home Page</Link> */}
             <div className='container mx-auto mt-2 mb-2'>
                 <div class="bg-pink-200 rounded-lg shadow-lg p-6 container ">

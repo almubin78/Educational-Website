@@ -18,7 +18,10 @@ const SocialLogin = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email,img: loggedInUser.photoURL }
+                // mongodb atlas
                 // fetch('http://localhost:5000/student', {
+                    // compass
+                // fetch('http://localhost:8000/student', {
                 fetch('https://phyict-server-almubin78.vercel.app/student', {
                     method: 'POST',
                     headers: {

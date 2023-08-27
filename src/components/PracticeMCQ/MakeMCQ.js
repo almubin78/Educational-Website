@@ -9,7 +9,11 @@ const MakeMCQ = () => {
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
     const [mcqQuestions, setMcqQuestions] = useState([]);
     useEffect(() => {
+        // mongodb
         // fetch('http://localhost:5000/sscMcq')
+        // compass
+        // fetch('http://localhost:8000/sscMcq')
+        //Live site
         fetch('https://phyict-server-almubin78.vercel.app/sscMcq')
             .then(res => res.json())
             .then(data => setMcqQuestions(data))
@@ -17,7 +21,6 @@ const MakeMCQ = () => {
     const handleMCQ = (mcq) => {
         const newMCQ = {
             question: mcq.question,
-            level: "SSC",
             questionNo: parseInt(mcqQuestions.length) + 1,
             subject: "physics",
             level: mcq.level,
@@ -26,11 +29,15 @@ const MakeMCQ = () => {
             type: 'free',
             options: [mcq.firstOption, mcq.secondOption, mcq.thirdOption, mcq.fourthOption],
             correctAnswer: mcq.correctAnswer,
-            explanation:mcq.explanation
+            fullExplanation:[mcq.explanationOne,mcq.explanationTwo,mcq.explanationThree]
 
         }
 
+        //mongodb
         // axios.post('http://localhost:5000/sscMcq', newMCQ)
+        // compass
+        // axios.post('http://localhost:8000/sscMcq', newMCQ)
+        // Live server
         axios.post('https://phyict-server-almubin78.vercel.app/sscMcq', newMCQ)
             .then(data => {
                 setMcqQuestions(data);
@@ -50,7 +57,7 @@ const MakeMCQ = () => {
         setClassDetail(e.target.value)
     }
     return (
-        <div className='h-[800px] flex justify-center items-center mt-3'>
+        <div className=' flex justify-center items-center mt-3'>
             <div className='w-96 p-7'>
                 <h2 className='text-xl text-center'>Make MCQ</h2>
                 <form onSubmit={handleSubmit(handleMCQ)}>
@@ -64,11 +71,22 @@ const MakeMCQ = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Explanation</span></label>
-                        <textarea rows="40" type="text" {...register("explanation", {
+                        <textarea rows="40" type="text" {...register("explanationOne", {
                             // required: "Name is Required"
                         })} className="input input-bordered w-full max-w-xs" />
-                        {errors.explanation && <p className='text-red-500'>{errors.explanation.message}</p>}
+                        {errors.explanationOne && <p className='text-red-500'>{errors.explanationOne.message}</p>}
+
+                        <textarea rows="40" type="text" {...register("explanationTwo", {
+                            // required: "Name is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.explanationTwo && <p className='text-red-500'>{errors.explanationTwo.message}</p>}
+
+                        <textarea rows="40" type="text" {...register("explanationThree", {
+                            // required: "Name is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.explanationThree && <p className='text-red-500'>{errors.explanationThree.message}</p>}
                     </div>
+
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Level</span></label>
                         <select

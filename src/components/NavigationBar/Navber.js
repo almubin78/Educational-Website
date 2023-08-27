@@ -15,7 +15,7 @@ const Navber = () => {
     return (
         <nav className="bg-blue-500 p-4">
             <div className="container mx-auto flex justify-between items-center">
-               
+
                 <Link to="/" className="text-white text-xl font-bold">
                     PhyICT
                 </Link>
@@ -39,6 +39,12 @@ const Navber = () => {
                         Home
                     </NavLink>
                     <NavLink
+                        to="/practice"
+                        className="block mt-4 md:inline-block md:mt-0 text-white mr-4 link"
+                    >
+                        Play MCQ
+                    </NavLink>
+                    <NavLink
                         to="/about"
                         className="block mt-4 md:inline-block md:mt-0 text-white mr-4 link"
                     >
@@ -52,12 +58,7 @@ const Navber = () => {
                             >
                                 Schedule
                             </NavLink>
-                            <NavLink
-                                to="/practice"
-                                className="block mt-4 md:inline-block md:mt-0 text-white mr-4 link"
-                            >
-                                Play MCQ
-                            </NavLink>
+
                             <NavLink
                                 to="/calculationMath"
                                 className="block mt-4 md:inline-block md:mt-0 text-white mr-4 link"

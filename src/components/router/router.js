@@ -43,31 +43,36 @@ const router = createBrowserRouter([
                 path:'/calculationMath',
                 element:<PhysicsCalculator/>
             
-            },
+            },{
+                path:'/login',
+                element:<Login/>
+            },{
+                path:'/register',
+                element:<Register/>
+            
+            },{
+                path:'/about',
+                element: <AboutUs/>
+            }
+            
+            ,
+            {
+                path:'/practice',
+                element: <PracticeMCQ/>
+            }
         ]
-    },{
-        path:'/login',
-        element:<Login/>
-    },{
-        path:'/register',
-        element:<Register/>
-    
     },
-    {
-        path:'/about',
-        element: <AboutUs/>
-    }
     
-    ,
     {
         path:'*',
         element: <Error/>
     }
-    ,
-    {
-        path:'/practice',
-        element: <PrivateRoute><PracticeMCQ/></PrivateRoute>
-    }
+    
+    // ,
+    // {
+    //     path:'/practice',
+    //     element: <PrivateRoute><PracticeMCQ/></PrivateRoute>
+    // }
 ])
 
 //export

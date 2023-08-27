@@ -16,7 +16,8 @@ const Footer = () => {
           <div className='md:text-left text-center'>
             <h3 class="text-lg font-semibold text-white mb-4 ">Contact</h3>
             <ul class="text-gray-400">
-              <li class="mb-2">Domor Gacha Road, Grameen Bank, Nakaihat</li>
+              <li class="mb-2">The Best Private Home, Nakaihat</li>
+              <li class="mb-1 text-sm">(East side of Grameen Bank)</li>
               <li class="mb-1">Gobindogonj,Gaibandha</li>
               <li class="mb-2">Phone: 01701906543</li>
               <li class="mb-2">Email: almubin78@gmail.com</li>
